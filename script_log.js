@@ -27,7 +27,8 @@ function sing_up() {
         }else if(goodPassword(password)){
 
         }else{
-            
+            "";
+            "";
         }
     }
 }
