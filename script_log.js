@@ -9,7 +9,7 @@ else {
     localStorage.setItem("users", users);
 }
 
-function sing_up() {
+function singUp() {
     let username;
     let password;
     let exists = false;
@@ -22,18 +22,39 @@ function sing_up() {
 
     }
     else {
-        if(!goodUserName(username)){
+        if (!goodUserName(username)) {
 
-        }else if(goodPassword(password)){
+        } else if (!goodPassword(password)) {
 
-        }else{
-            
+        } else {
+            const newUser = { userName: username, password: password }
+            userArr.push(newUser);
+            users = JSON.stringify(userArr);
+            localStorage.setItem("users", users);
         }
     }
 }
-function goodPassword(password){
-    return true||password==5;
+
+function logIn() {
+    let username;
+    let password;
+    let find = false;
+    let user;
+    userArr.forEach(element => {
+        if (element.userName == username && element.password == password) {
+            find = true;
+            user = element;
+        }
+    });
+    if (find) {
+
+    } else {
+        
+    }
 }
-function goodUserName(username){
-    return true||username==5;
+function goodPassword(password) {
+    return true || password == 5;
+}
+function goodUserName(username) {
+    return true || username == 5;
 }
