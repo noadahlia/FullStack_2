@@ -47,9 +47,10 @@ function logIn() {
         }
     });
     if (find) {
-
+        localStorage.setItem("user",user);
+        window.location.href = "index.html";
     } else {
-        
+
     }
 }
 function goodPassword(password) {
