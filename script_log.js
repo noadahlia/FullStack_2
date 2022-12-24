@@ -8,10 +8,17 @@ else {
     users = JSON.stringify(userArr);
     localStorage.setItem("users", users);
 }
+for(let jj=0;jj<5;jj++){
+    alert(jj);
+}
+const btnEnter = getElementById("enter");
+const btnSignUp = getElementById("sign_up");
+btnEnter.addEventListener("click", logIn);
+btnSignUp.addEventListener("click", singUp);
 
 function singUp() {
-    let username;
-    let password;
+    let username = document.getElementById("username_sign_up").textContent;
+    let password = document.getElementById("password_sign_up").textContent;
     let exists = false;
     userArr.forEach(element => {
         if (element.userName == username) {
@@ -19,7 +26,7 @@ function singUp() {
         }
     });
     if (exists) {
-
+        alert("this username ////");
     }
     else {
         if (!goodUserName(username)) {
@@ -36,8 +43,8 @@ function singUp() {
 }
 
 function logIn() {
-    let username;
-    let password;
+    let username = document.getElementById("username_log").textContent;
+    let password = document.getElementById("password_log").textContent;
     let find = false;
     let user;
     userArr.forEach(element => {
@@ -47,7 +54,7 @@ function logIn() {
         }
     });
     if (find) {
-        localStorage.setItem("user",user);
+        localStorage.setItem("user", user);
         window.location.href = "index.html";
     } else {
 
@@ -59,3 +66,4 @@ function goodPassword(password) {
 function goodUserName(username) {
     return true || username == 5;
 }
+
