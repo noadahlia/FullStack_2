@@ -12,13 +12,14 @@ else {
 
 const btnEnter = document.getElementById("enter");
 const btnSignUp = document.getElementById("sign_up");
-console.log(btnEnter,btnSignUp);
 btnEnter.addEventListener("click", logIn);
 btnSignUp.addEventListener("click", singUp);
 
 function singUp() {
-    let username = document.getElementById("username_sign_up").textContent;
-    let password = document.getElementById("password_sign_up").textContent;
+    let username = document.getElementById("username_sign_up").value;
+    let password = document.getElementById("password_sign_up").value;
+    let password2 = document.getElementById("password_again").value;
+    let email = document.getElementById("email").value;
     let exists = false;
     usersArr.forEach(element => {
         if (element.userName == username) {
@@ -33,8 +34,10 @@ function singUp() {
 
         } else if (!goodPassword(password)) {
 
+        } else if (password != password2) {
+            alert("the passwords are not eual");
         } else {
-            const newUser = { userName: username, password: password }
+            const newUser = { userName: username, password: password, email: email }
             usersArr.push(newUser);
             users = JSON.stringify(usersArr);
             localStorage.setItem("users", users);
@@ -43,21 +46,27 @@ function singUp() {
 }
 
 function logIn() {
-    let username = document.getElementById("username_log").textContent;
-    let password = document.getElementById("password_log").textContent;
+    let username = document.getElementById("username_log").value;
+    let password = document.getElementById("password_log").value;
     let find = false;
     let user;
-    usersArr.forEach(element => {
-        if (element.userName == username && element.password == password) {
+    for (u of usersArr) {
+        if (u.userName == username) {
             find = true;
-            user = element;
+            user = u;
         }
-    });
-    if (find) {
+    }
+    console.log(find);
+    console.log(usersArr);
+    console.log(username);
+
+    if (!find) {
+        alert("not find");
+    } else if (password != element.password) {
+        alert("password is not correct");
+    } else {
         localStorage.setItem("user", user);
         window.location.href = "index.html";
-    } else {
-
     }
 }
 function goodPassword(password) {
