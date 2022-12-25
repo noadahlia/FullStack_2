@@ -20,7 +20,7 @@ else {
 
 // const helpBtn = document.getElementById("help_btn");
 
-function singUp() {
+function signUp() {
     let username = document.getElementById("username_sign_up").value;
     let password = document.getElementById("password_sign_up").value;
     let password2 = document.getElementById("password_again").value;
@@ -56,6 +56,7 @@ function singUp() {
             return true;
         }
     }
+    return false;
 }
 
 function logIn() {
