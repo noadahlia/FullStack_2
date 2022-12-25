@@ -10,16 +10,6 @@ else {
     localStorage.setItem("users", users);
 }
 
-// let win =window;
-// function move(){
-//     console.log(window);
-//     //win.location.href = "index.html";
-// }
-
-
-
-// const helpBtn = document.getElementById("help_btn");
-
 function signUp() {
     let username = document.getElementById("username_sign_up").value;
     let password = document.getElementById("password_sign_up").value;
@@ -49,10 +39,6 @@ function signUp() {
             users = JSON.stringify(usersArr);
             localStorage.setItem("users", users);
             localStorage.setItem("user", newUser);
-            //window.location.href = "index.html";
-            //helpBtn.onclick();
-            //move();
-            //window.location.href = "index.html";
             return true;
         }
     }
@@ -78,15 +64,6 @@ function logIn() {
         alert("password is not correct");
         return false;
     } else {
-        //localStorage.setItem("user", user);
-        //window.location.href = "index.html";
-        //helpBtn.onclick();
-        //console.log(document.getElementById("help_btn2").click());
-        //document.getElementById("help_btn2").click();
-        //move();
-        alert("i am here");
-        console.log("me");
-        //helpBtn.click();
         return true;
     }
 }
