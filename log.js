@@ -10,10 +10,15 @@ else {
     localStorage.setItem("users", users);
 }
 
-const btnEnter = document.getElementById("enter");
-const btnSignUp = document.getElementById("sign_up");
-btnEnter.addEventListener("click", logIn);
-btnSignUp.addEventListener("click", singUp);
+// let win =window;
+// function move(){
+//     console.log(window);
+//     //win.location.href = "index.html";
+// }
+
+
+
+// const helpBtn = document.getElementById("help_btn");
 
 function singUp() {
     let username = document.getElementById("username_sign_up").value;
@@ -28,6 +33,7 @@ function singUp() {
     });
     if (exists) {
         alert("this username ////");
+        return false;
     }
     else {
         if (!goodUserName(username)) {
@@ -36,11 +42,18 @@ function singUp() {
 
         } else if (password != password2) {
             alert("the passwords are not eual");
+            return false;
         } else {
             const newUser = { userName: username, password: password, email: email }
             usersArr.push(newUser);
             users = JSON.stringify(usersArr);
             localStorage.setItem("users", users);
+            localStorage.setItem("user", newUser);
+            //window.location.href = "index.html";
+            //helpBtn.onclick();
+            //move();
+            //window.location.href = "index.html";
+            return true;
         }
     }
 }
@@ -54,19 +67,26 @@ function logIn() {
         if (u.userName == username) {
             find = true;
             user = u;
+            break;
         }
     }
-    console.log(find);
-    console.log(usersArr);
-    console.log(username);
-
     if (!find) {
         alert("not find");
-    } else if (password != element.password) {
+        return false;
+    } else if (password != user.password) {
         alert("password is not correct");
+        return false;
     } else {
-        localStorage.setItem("user", user);
-        window.location.href = "index.html";
+        //localStorage.setItem("user", user);
+        //window.location.href = "index.html";
+        //helpBtn.onclick();
+        //console.log(document.getElementById("help_btn2").click());
+        //document.getElementById("help_btn2").click();
+        //move();
+        alert("i am here");
+        console.log("me");
+        //helpBtn.click();
+        return true;
     }
 }
 function goodPassword(password) {

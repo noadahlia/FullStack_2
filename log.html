@@ -9,7 +9,7 @@
 </head>
 <body>
     <main>
-        <form class="form_log_in" action="" method="post">
+        <form class="form_log_in" action="index.html" method="post" onsubmit="return logIn()">
             <fieldset>
 
                 <legend>log in</legend>
@@ -44,7 +44,7 @@
             </fieldset>
         </form>
 
-        <form action="" method="post">
+        <form action="index.html" method="post" onsubmit="return signUp()">
             <fieldset>
                 <legend>sign up</legend>
 
@@ -81,6 +81,13 @@
                 </div> -->
             </fieldset>
         </form>
+        <a href="index.html">
+            <button id="help_btn">Click</button>
+        </a>
+
+        <button id="help_btn2" onclick="window.location.href='index.html';">
+            Click Here
+          </button>
     </main>
 </body>
 <script src="log.js"></script>
