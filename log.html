@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <form class="form_log_in" action="index.html" method="post" onsubmit="return logIn()">
+            <fieldset>
+
+                <legend>log in</legend>
+                <div>
+                    <label for="username_log">user name:</label>
+                    <input class="big" type="text" placeholder="enter user name" id="username_log" name="Username"
+                        required />
+                </div>
+
+                <div>
+                    <label for="password_log">password:</label>
+                    <input class="big" type="password" placeholder="enter password" id="password_log" name="Password"
+                        required />
+                </div>
+
+                <div>
+                    <button id="enter" type="submit">enter</button>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember" id="remember"> remember me
+                    </label>
+                </div>
+
+                <div class="container">
+                    <button type="reset" class="cancelbtn">clear</button>
+                    <span class="psw"><a href="./error_page.html">forgot password</a>
+                        <tr> / <a href="./sign_up.html">no account</a></tr>
+                    </span>
+                </div>
+            </fieldset>
+        </form>
+
+        <form action="index.html" method="post" onsubmit="return signUp()">
+            <fieldset>
+                <legend>sign up</legend>
+
+                <div>
+                    <label for="username_sign_up">user name:</label>
+                    <input class="big" type="text" placeholder="enter user name" id="username_sign_up" name="Username"
+                        required />
+                </div>
+
+                <div>
+                    <label for="password_sign_up">password:</label>
+                    <input class="big" type="password" id="password_sign_up" placeholder="enter password" name="Password"
+                        required />
+                </div>
+
+                <div>
+                    <label for="password_again">enter password again:</label>
+                    <input class="big" type="password" id="password_again" placeholder="enter password again"
+                        name="Password_again" required />
+                </div>
+
+                <div>
+                    <label for="email">email</label>
+                    <input class="big" type="email" placeholder="enter email address" id="email" name="Email" required />
+                </div>
+
+                <div>
+                    <button id="sign_up" type="submit">sign up</button>
+                </div>
+
+                <!-- <div class="container">
+                    <button type="reset" class="cancelbtn">clear</button>
+                    <span class="psw"><a href="./log_in.html">I have an account</tr></span>
+                </div> -->
+            </fieldset>
+        </form>
+    </main>
+</body>
+<script src="log.js"></script>
+</html>
