@@ -34,7 +34,7 @@ function signUp() {
             alert("the passwords are not eual");
             return false;
         } else {
-            const newUser = { userName: username, password: password, email: email }
+            const newUser = { userName: username, password: password, email: email, snake: 0, tetris: 0 }
             usersArr.push(newUser);
             users = JSON.stringify(usersArr);
             localStorage.setItem("users", users);
