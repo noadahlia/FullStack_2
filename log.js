@@ -9,6 +9,28 @@ else {
     users = JSON.stringify(usersArr);
     localStorage.setItem("users", users);
 }
+const usernameSignUp = document.getElementById("username_sign_up");
+usernameSignUp.addEventListener("input", function (e) {
+    const p = document.getElementById("validation-username");
+    if (!strongUserName(usernameSignUp.value)) {
+        p.textContent = "Bad user name";
+    }
+    else if (existsUserName(usernameSignUp.value)) {
+        p.textContent = "Exist";
+    }
+    else {
+        p.textContent = "Good";
+    }
+});
+
+const passwordSignUp = document.getElementById("password_sign_up");
+passwordSignUp.addEventListener("input", function (e) {
+    const p = document.getElementById("validation-password");
+    p.textContent = strongPassword(passwordSignUp.value);
+});
+
+console.log(usersArr);
+
 
 function signUp() {
     let username = document.getElementById("username_sign_up").value;
@@ -27,9 +49,9 @@ function signUp() {
     }
     else {
         if (!goodUserName(username)) {
-
+            return false;
         } else if (!goodPassword(password)) {
-
+            return false;
         } else if (password != password2) {
             alert("the passwords are not eual");
             return false;
@@ -42,7 +64,7 @@ function signUp() {
             return true;
         }
     }
-    return false;
+    //return false;
 }
 
 function logIn() {
@@ -68,9 +90,65 @@ function logIn() {
     }
 }
 function goodPassword(password) {
-    return true || password == 5;
-}
-function goodUserName(username) {
-    return true || username == 5;
+    return printStrongNess(password) == "Strong";
 }
 
+function strongPassword(input) {
+    // Checking lower alphabet in string
+    let n = input.length;
+    let hasLower = false, hasUpper = false,
+        hasDigit = false, specialChar = false;
+    set = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'];
+    for (let i of input) {
+        if (/[a-z]/.test(i))
+            hasLower = true;
+        if (/[A-Z]/.test(i))
+            hasUpper = true;
+        if (/[0-9]/.test(i))
+            hasDigit = true;
+        if (set.includes(i))
+            specialChar = true;
+    }
+    if (hasDigit && hasLower && hasUpper && specialChar && n >= 8) {
+        return "Strong";
+    }
+    else if ((hasLower || hasUpper || specialChar) && n >= 6) {
+        return "Moderate";
+    }
+    else {
+        return "Weak";
+    }
+}
+
+
+function goodUserName(username) {
+    if (strongUserName == true) {
+        return true;
+    }
+    if (existsUserName(username)) {
+        return false;
+    }
+    return true;
+}
+
+function existsUserName(username) {
+    for (u of usersArr) {
+        if (u.userName === username) {
+            return true;
+        }
+    }
+    console.log(usersArr);
+    return false;
+}
+function strongUserName(username) {
+    const n = username.length;
+    if (n < 6 || n > 30) {
+        return false;
+    }
+    for (i of username) {
+        if (!/[a-zA-Z0-9]/.test(i)) {
+            return false;
+        }
+    }
+    return true;
+}

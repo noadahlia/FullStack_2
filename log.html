@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="log.css">
     <title>Document</title>
 </head>
+
 <body>
     <main class="main-container">
         <form class="form_log_in" action="home.html" method="post" onsubmit="return logIn()">
@@ -28,17 +30,14 @@
 
                 <div>
                     <button id="enter" type="submit">enter</button>
+                    <button type="reset" class="cancelbtn">clear</button>
                 </div>
 
-                <div>
+                <!-- <div>
                     <label>
                         <input type="checkbox" checked="checked" name="remember" id="remember"> remember me
                     </label>
-                </div>
-
-                <div class="container">
-                    <button type="reset" class="cancelbtn">clear</button>
-                </div>
+                </div> -->
             </fieldset>
         </form>
 
@@ -50,12 +49,14 @@
                     <label for="username_sign_up">user name:</label>
                     <input class="big" type="text" placeholder="enter user name" id="username_sign_up" name="Username"
                         required />
+                    <p id="validation-username" class="validation"></p>
                 </div>
 
                 <div>
                     <label for="password_sign_up">password:</label>
-                    <input class="big" type="password" id="password_sign_up" placeholder="enter password" name="Password"
-                        required />
+                    <input class="big" type="password" id="password_sign_up" placeholder="enter password"
+                        name="Password" required />
+                    <p id="validation-password" class="validation"></p>
                 </div>
 
                 <div>
@@ -66,7 +67,8 @@
 
                 <div>
                     <label for="email">email</label>
-                    <input class="big" type="email" placeholder="enter email address" id="email" name="Email" required />
+                    <input class="big" type="email" placeholder="enter email address" id="email" name="Email"
+                        required />
                 </div>
 
                 <div>
