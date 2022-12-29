@@ -1,8 +1,8 @@
 users = []
 u = ["chana", "shifra", "noa", "dian", "efrat", "tamar", "yael", "rachel", "ester", "jacob", "nadav", "asher", "matan", "yossi", "yonatan"]
 for (let i = 0; i < 15; i++) {
-    let s = Math.floors(Math.random() * 15);
-    let t = Math.floors(Math.random() * 15);
+    let s = Math.floor(Math.random() * 15);
+    let t = Math.floor(Math.random() * 15);
     let username = u[i];
     let email = username + "@gmail.com";
     let password = username + "100";
