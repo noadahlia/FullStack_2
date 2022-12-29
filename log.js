@@ -76,7 +76,7 @@ function signUp() {
             usersArr.push(newUser);
             users = JSON.stringify(usersArr);
             localStorage.setItem("users", users);
-            localStorage.setItem("user", newUser);
+            localStorage.setItem("user", JSON.stringify(newUser));
             return true;
         }
     }
@@ -109,11 +109,12 @@ function logIn() {
         localStorage.setItem("tries", tries);
         return false;
     } else {
+        localStorage.setItem("user", JSON.stringify(user));
         return true;
     }
 }
 function goodPassword(password) {
-    return printStrongNess(password) == "Strong";
+    return strongPassword(password) == "Strong";
 }
 
 function strongPassword(input) {
@@ -145,7 +146,7 @@ function strongPassword(input) {
 
 
 function goodUserName(username) {
-    if (strongUserName == true) {
+    if (strongUserName(username) == true) {
         return true;
     }
     if (existsUserName(username)) {
