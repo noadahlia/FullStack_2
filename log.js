@@ -9,6 +9,18 @@ else {
     users = JSON.stringify(usersArr);
     localStorage.setItem("users", users);
 }
+
+let tries = localStorage.getItem("tries");
+let triesArr;
+if (tries) {
+    triesArr = JSON.parse(tries);
+}
+else {
+    triesArr = [];
+    tries = JSON.stringify(triesArr);
+    localStorage.setItem("tries", tries);
+}
+
 const usernameSignUp = document.getElementById("username_sign_up");
 usernameSignUp.addEventListener("input", function (e) {
     const p = document.getElementById("validation-username");
@@ -16,7 +28,7 @@ usernameSignUp.addEventListener("input", function (e) {
         p.textContent = "Bad user name";
     }
     else if (existsUserName(usernameSignUp.value)) {
-        p.textContent = "Exist";
+        p.textContent = "Exists";
     }
     else {
         p.textContent = "Good";
@@ -55,7 +67,11 @@ function signUp() {
         } else if (password != password2) {
             alert("the passwords are not eual");
             return false;
-        } else {
+        } else if (existsEmail(email)) {
+            alert("the email is not available");
+            return false;
+        }
+        else {
             const newUser = { userName: username, password: password, email: email, snake: 0, tetris: 0 }
             usersArr.push(newUser);
             users = JSON.stringify(usersArr);
@@ -82,8 +98,15 @@ function logIn() {
     if (!find) {
         alert("not find");
         return false;
-    } else if (password != user.password) {
+    } else if (blocked(username)) {
+        return false;
+    }
+    else if (password != user.password) {
         alert("password is not correct");
+        const missedTry = { userName: username, time: new Date().getTime() };
+        triesArr.push(missedTry);
+        tries = JSON.stringify(triesArr);
+        localStorage.setItem("tries", tries);
         return false;
     } else {
         return true;
@@ -98,7 +121,7 @@ function strongPassword(input) {
     let n = input.length;
     let hasLower = false, hasUpper = false,
         hasDigit = false, specialChar = false;
-    set = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'];
+    let chars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '+'];
     for (let i of input) {
         if (/[a-z]/.test(i))
             hasLower = true;
@@ -106,7 +129,7 @@ function strongPassword(input) {
             hasUpper = true;
         if (/[0-9]/.test(i))
             hasDigit = true;
-        if (set.includes(i))
+        if (chars.includes(i))
             specialChar = true;
     }
     if (hasDigit && hasLower && hasUpper && specialChar && n >= 8) {
@@ -137,7 +160,14 @@ function existsUserName(username) {
             return true;
         }
     }
-    console.log(usersArr);
+    return false;
+}
+function existsEmail(email) {
+    for (u of usersArr) {
+        if (u.email === email) {
+            return true;
+        }
+    }
     return false;
 }
 function strongUserName(username) {
@@ -151,4 +181,18 @@ function strongUserName(username) {
         }
     }
     return true;
+}
+
+function blocked(username) {
+    let count = 0;
+    let now = new Date().getTime();
+    for (t of triesArr) {
+        if (t.userName == username && now - t.time > 300000) {
+            count++;
+        }
+    }
+    if (count > 10) {
+        return true;
+    }
+    return false;
 }
