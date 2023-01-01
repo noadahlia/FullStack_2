@@ -17,23 +17,27 @@
     <div class="main-container">
         <h1 id="usernameTitle"></h1>
         <h3>Play here to a lot of various games. Save your records and compare to others gamers to become the best</h3>
-        <div class="current-game" id="current-game" style="display:none">
-            <div class="close_btn_area">
-                <input type="button" class="close_btn" value="X" > 
-            </div>
-        </div>
         <div class="games-container">
 
-            <div class="gallery" id="tetris" onclick="openGame('tetris')">
+            <div class="gallery" id="wordGuessing" onclick="openGame('wordGuessing')">
                 <a target="_blank" href="">
-                    <img src="images/tetris.png" width="600" height="400">
+                    <img src="images/wordGuessing.png" width="600" height="400">
                 </a>
                 <div class="overlay">
                     <div class="text">Hello World</div>
                 </div>
             </div>
 
-            <div class="gallery" >
+            <div class="gallery" id="snake" onclick="openGame('snake')">
+                <a target="_blank" href="">
+                    <img src="images/snake.png" width="600" height="400">
+                </a>
+                <div class="overlay">
+                    <div class="text">Hello World</div>
+                </div>
+            </div>
+
+            <div class="gallery">
                 <a target="_blank" href="img_forest.jpg">
                     <img src="images/angrybirds.png" width="600" height="400">
                 </a>
@@ -95,15 +99,19 @@
 
     </div>
     <script type="text/javascript">
+
         window.localStorage.setItem('name', 'Noa12530');
-        username=window.localStorage.getItem('name');
-        document.getElementById("usernameTitle").innerHTML="Welcome, "+username;
-        function openGame(game){
-            var url = "C:/Fullstack/Project2/FullStack_2/games/"+game+".html";
-            window.location.href=url;
+        username = window.localStorage.getItem('name');
+        document.getElementById("usernameTitle").innerHTML = "Welcome, " + username;
+        function openGame(game) {
+            var url = "C:/Fullstack/Project2/FullStack_2/gameDisplay.html?"+game;;
+            window.location.href = url;
         }
     </script>
-   
+    <script>
+
+    </script>
+
 </body>
 
 </html>
