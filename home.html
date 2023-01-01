@@ -99,13 +99,13 @@
 
     </div>
     <script type="text/javascript">
-
-        window.localStorage.setItem('name', 'Noa12530');
-        username = window.localStorage.getItem('name');
-        document.getElementById("usernameTitle").innerHTML = "Welcome, " + username;
-        function openGame(game) {
-            var url = "C:/Fullstack/Project2/FullStack_2/gameDisplay.html?"+game;;
-            window.location.href = url;
+        let user = localStorage.getItem("user");
+        user = JSON.parse(user);
+        let username = user.userName;
+        document.getElementById("usernameTitle").innerHTML="Welcome, "+username;
+        function openGame(game){
+            var url = "C:/Fullstack/Project2/FullStack_2/games/"+game+".html";
+            window.location.href=url;
         }
     </script>
     <script>

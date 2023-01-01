@@ -21,6 +21,7 @@ let boomIndex = 0;
 
 grid.style.width = width * 20 + "px";
 grid.style.height = width * 20 + "px";
+localStorage.setItem("score",score);
 /*
 for(div of document.querySelectorAll('.grid div')){
     div.style.width = width * 20 + "px";
@@ -112,6 +113,7 @@ function eatApple(squares, tail) {
         }
         score++;
         scoreDisplay.textContent = score;
+        localStorage.setItem("score",score);
         clearInterval(interval);
         intervalTime = intervalTime * speed;
         interval = setInterval(moveOutcome, intervalTime);
