@@ -26,10 +26,14 @@
     btn2.addEventListener("click", click);
     btn3.addEventListener("click", click);
 
+    localStorage.setItem("score",0);
+
     function click() {
         localStorage.setItem("level-snake", this.id[3]);
         window.location.href = "./games/snake.html";
     }
+
+
 </script>
 
 </html>

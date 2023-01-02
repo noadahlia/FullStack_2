@@ -6,6 +6,7 @@ resetBtn = document.querySelector(".reset-btn"),
 typingInput = document.querySelector(".typing-input");
 
 let word, maxGuesses, incorrectLetters = [], correctLetters = [];
+let actual_score=0;
 
 function randomWord() {
     let ranItem = wordList[Math.floor(Math.random() * wordList.length)];
@@ -46,9 +47,14 @@ function initGame(e) {
     setTimeout(() => {
         if(correctLetters.length === word.length) {
             alert(`Congrats! You found the word ${word.toUpperCase()}`);
+            actual_score=+word.length;
+            localStorage.setItem("score",actual_score);
             return randomWord();
         } else if(maxGuesses < 1) {
             alert("Game over! You don't have remaining guesses");
+            actual_score=0;
+            localStorage.setItem("score",actual_score);
+
             for(let i = 0; i < word.length; i++) {
                 inputs.querySelectorAll("input")[i].value = word[i];
             }
@@ -56,7 +62,13 @@ function initGame(e) {
     }, 100);
 }
 
-resetBtn.addEventListener("click", randomWord);
+function clickReset(){
+    actual_score=0;
+    localStorage.setItem("score",actual_score);
+    randomWord();
+}
+
+resetBtn.addEventListener("click", clickReset);
 typingInput.addEventListener("input", initGame);
 inputs.addEventListener("click", () => typingInput.focus());
 document.addEventListener("keydown", () => typingInput.focus());

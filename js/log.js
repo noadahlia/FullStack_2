@@ -107,7 +107,7 @@ function signUp() {
             return false;
         }
         else {
-            const newUser = { userName: username, password: password, email: email, snake: 0, tetris: 0 }
+            const newUser = { userName: username, password: password, email: email, snake: 0, wordGuessing: 0 }
             usersArr.push(newUser);
             users = JSON.stringify(usersArr);
             localStorage.setItem("users", users);
