@@ -39,6 +39,7 @@
     transition: .5s ease;
     background-color: rgb(166, 47, 206);
     border-radius: 40px;
+    text-align: center;
   }
   
   .current-game{
@@ -64,3 +65,7 @@
     margin:20px;
     text-align: center;
   }
+
+.play_btn{
+  vertical-align: middle;
+}
