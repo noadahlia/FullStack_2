@@ -42,14 +42,41 @@ const passwordSignUp = document.getElementById("password_sign_up");
 passwordSignUp.addEventListener("input", function (e) {
     const p = document.getElementById("validation-password");
     p.textContent = strongPassword(passwordSignUp.value);
-    if(goodPassword(passwordSignUp.value)){
-        p.style.color="";
+    if (goodPassword(passwordSignUp.value)) {
+        p.style.color = "";
     }
-    else{
-        p.style.color="red";
+    else {
+        p.style.color = "red";
     }
 });
 
+const email = document.getElementById("email");
+email.addEventListener("input", function (e) {
+    const p = document.getElementById("validation-email");
+    if (existsEmail(email.value)) {
+        p.textContent = "Exist email";
+        p.style.color = "red";
+    }
+    else {
+        p.textContent = "";
+        p.style.color = "";
+    }
+});
+
+const again = document.getElementById("password_again");
+again.addEventListener("blur", function (e) {
+    const p = document.getElementById("validation-again");
+    const password = document.getElementById("password_sign_up").value;
+    if (again.value ===password) {
+        p.textContent = "";
+        p.style.color = "";
+    }
+    else {
+        p.textContent = "passwords not equal";
+        p.style.color = "red";
+    }
+    console.log("here");
+});
 
 
 function signUp() {
@@ -73,10 +100,10 @@ function signUp() {
         } else if (!goodPassword(password)) {
             return false;
         } else if (password != password2) {
-            alert("the passwords are not eual");
+            //alert("the passwords are not eual");
             return false;
         } else if (existsEmail(email)) {
-            alert("the email is not available");
+            //alert("the email is not available");
             return false;
         }
         else {
