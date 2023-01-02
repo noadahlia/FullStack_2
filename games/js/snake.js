@@ -1,7 +1,7 @@
 let grid = document.querySelector(".grid");
-let popup = document.querySelector(".popup");
-let playAgain = document.querySelector(".playAgain");
-let scoreDisplay = document.querySelector(".scoreDisplay");
+//let popup = document.querySelector(".popup");
+//let playAgain = document.querySelector(".playAgain");
+//let scoreDisplay = document.querySelector(".scoreDisplay");
 // let left = document.querySelector(".left");
 // let bottom = document.querySelector(".bottom");
 // let right = document.querySelector(".right");
@@ -21,7 +21,7 @@ let boomIndex = 0;
 
 grid.style.width = width * 20 + "px";
 grid.style.height = width * 20 + "px";
-localStorage.setItem("score",score);
+localStorage.setItem("score", score);
 /*
 for(div of document.querySelectorAll('.grid div')){
     div.style.width = width * 20 + "px";
@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keyup", control);
     createBoard();
     startGame();
-    playAgain.addEventListener("click", replay);
+    //playAgain.addEventListener("click", replay);
 })
 
 //createboard function
 function createBoard() {
-    popup.style.display = "none";
+    //popup.style.display = "none";
     for (let i = 0; i < width * width; i++) {
         let div = document.createElement("div");
         grid.appendChild(div);
@@ -49,7 +49,8 @@ function startGame() {
     randomApple(squares);
     //random apple 
     direction = 1;
-    scoreDisplay.innerHTML = score;
+    //scoreDisplay.innerHTML = score;
+    localStorage.setItem("score", score);
     intervalTime = 1000;
     currentSnake = [2, 1, 0];
     currentIndex = 0;
@@ -62,8 +63,11 @@ function moveOutcome() {
     let squares = document.querySelectorAll(".grid div");
     if (checkForHits(squares)) {
         alert("you hit something");
-        popup.style.display = "flex";
-        return clearInterval(interval);
+        //popup.style.display = "flex"; return
+        clearInterval(interval);
+        if (confirm("Play Again?") == true) {
+            replay();
+        }
     } else {
         moveSnake(squares);
     }
@@ -88,14 +92,14 @@ function checkForHits(squares) {
         (currentSnake[0] - width <= 0 && direction === -width) ||
         squares[currentSnake[0] + direction].classList.contains("snake") ||
         (stage && isboom(squares))
-        ) {
+    ) {
         return true;
     } else {
         return false;
     }
 }
-function isboom(squares){
-    if(squares[currentSnake[0]].classList.contains("boom")){
+function isboom(squares) {
+    if (squares[currentSnake[0]].classList.contains("boom")) {
         return true;
     }
     return false;
@@ -112,8 +116,8 @@ function eatApple(squares, tail) {
             randomBoom(squares);
         }
         score++;
-        scoreDisplay.textContent = score;
-        localStorage.setItem("score",score);
+        //scoreDisplay.textContent = score;
+        localStorage.setItem("score", score);
         clearInterval(interval);
         intervalTime = intervalTime * speed;
         interval = setInterval(moveOutcome, intervalTime);
@@ -169,5 +173,5 @@ function replay() {
     grid.innerHTML = "";
     createBoard();
     startGame();
-    popup.style.display = "none";
+    //popup.style.display = "none";
 }  

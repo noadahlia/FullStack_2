@@ -26,12 +26,15 @@ usernameSignUp.addEventListener("input", function (e) {
     const p = document.getElementById("validation-username");
     if (!strongUserName(usernameSignUp.value)) {
         p.textContent = "Bad user name";
+        p.style.color = "red";
     }
     else if (existsUserName(usernameSignUp.value)) {
         p.textContent = "Exists";
+        p.style.color = "red";
     }
     else {
         p.textContent = "Good";
+        p.style.color = "";
     }
 });
 
@@ -39,9 +42,14 @@ const passwordSignUp = document.getElementById("password_sign_up");
 passwordSignUp.addEventListener("input", function (e) {
     const p = document.getElementById("validation-password");
     p.textContent = strongPassword(passwordSignUp.value);
+    if(goodPassword(passwordSignUp.value)){
+        p.style.color="";
+    }
+    else{
+        p.style.color="red";
+    }
 });
 
-console.log(usersArr);
 
 
 function signUp() {
@@ -56,7 +64,7 @@ function signUp() {
         }
     });
     if (exists) {
-        alert("this username ////");
+        //alert("this username ////");
         return false;
     }
     else {
@@ -99,6 +107,7 @@ function logIn() {
         alert("not find");
         return false;
     } else if (blocked(username)) {
+        alert("Wait, you tried too much");
         return false;
     }
     else if (password != user.password) {
@@ -114,7 +123,8 @@ function logIn() {
     }
 }
 function goodPassword(password) {
-    return strongPassword(password) == "Strong";
+    let strong = strongPassword(password);
+    return strong == "Strong" || strong == "Moderate";
 }
 
 function strongPassword(input) {
