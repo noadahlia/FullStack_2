@@ -16,16 +16,16 @@ let score = 0;
 let speed = 0.8;
 let intervalTime = 0;
 let interval = 0;
-let stage = false;//////
+let stage = 0;
 let boomIndex = 0;
 
 grid.style.width = width * 20 + "px";
 grid.style.height = width * 20 + "px";
 localStorage.setItem("score", score);
-/*
-for(div of document.querySelectorAll('.grid div')){
-    div.style.width = width * 20 + "px";
-}*/
+stage = Number(localStorage.getItem("level-snake"));
+if (stage > 1) {
+    speed = 0.6;
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keyup", control);
@@ -91,7 +91,7 @@ function checkForHits(squares) {
         (currentSnake[0] % width === 0 && direction === -1) ||
         (currentSnake[0] - width <= 0 && direction === -width) ||
         squares[currentSnake[0] + direction].classList.contains("snake") ||
-        (stage && isboom(squares))
+        (stage === 3 && isboom(squares))
     ) {
         return true;
     } else {
@@ -111,7 +111,7 @@ function eatApple(squares, tail) {
         squares[tail].classList.add("snake");
         currentSnake.push(tail);
         randomApple(squares);
-        if (stage) {
+        if (stage === 3) {
             squares[boomIndex].classList.remove("boom");
             randomBoom(squares);
         }

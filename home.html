@@ -104,7 +104,8 @@
         let username = user.userName;
         document.getElementById("usernameTitle").innerHTML = "Welcome, " + username;
         function openGame(game) {
-            const url = "./games/" + game + ".html";
+            //const url = "./games/" + game + ".html";
+            const url = "./choose_snake.html";
             const frame = "./gameDisplay.html";
             localStorage.setItem("url", url);
             localStorage.setItem("gameTitle", game.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) { return str.toUpperCase(); }));
