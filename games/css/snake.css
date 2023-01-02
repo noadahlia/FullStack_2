@@ -18,9 +18,10 @@ box-sizing:border-box*/
   }
   .snake {
     background: blue;
+    border-radius: 15px;
   }
   .head {
-    background: orange;
+    background: black;
   }
   .boom{
     background: red;

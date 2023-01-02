@@ -26,12 +26,15 @@ usernameSignUp.addEventListener("input", function (e) {
     const p = document.getElementById("validation-username");
     if (!strongUserName(usernameSignUp.value)) {
         p.textContent = "Bad user name";
+        p.style.color = "red";
     }
     else if (existsUserName(usernameSignUp.value)) {
         p.textContent = "Exists";
+        p.style.color = "red";
     }
     else {
         p.textContent = "Good";
+        p.style.color = "";
     }
 });
 
@@ -39,9 +42,41 @@ const passwordSignUp = document.getElementById("password_sign_up");
 passwordSignUp.addEventListener("input", function (e) {
     const p = document.getElementById("validation-password");
     p.textContent = strongPassword(passwordSignUp.value);
+    if (goodPassword(passwordSignUp.value)) {
+        p.style.color = "";
+    }
+    else {
+        p.style.color = "red";
+    }
 });
 
-console.log(usersArr);
+const email = document.getElementById("email");
+email.addEventListener("input", function (e) {
+    const p = document.getElementById("validation-email");
+    if (existsEmail(email.value)) {
+        p.textContent = "Exist email";
+        p.style.color = "red";
+    }
+    else {
+        p.textContent = "";
+        p.style.color = "";
+    }
+});
+
+const again = document.getElementById("password_again");
+again.addEventListener("blur", function (e) {
+    const p = document.getElementById("validation-again");
+    const password = document.getElementById("password_sign_up").value;
+    if (again.value ===password) {
+        p.textContent = "";
+        p.style.color = "";
+    }
+    else {
+        p.textContent = "passwords not equal";
+        p.style.color = "red";
+    }
+    console.log("here");
+});
 
 
 function signUp() {
@@ -56,7 +91,7 @@ function signUp() {
         }
     });
     if (exists) {
-        alert("this username ////");
+        //alert("this username ////");
         return false;
     }
     else {
@@ -65,10 +100,10 @@ function signUp() {
         } else if (!goodPassword(password)) {
             return false;
         } else if (password != password2) {
-            alert("the passwords are not eual");
+            //alert("the passwords are not eual");
             return false;
         } else if (existsEmail(email)) {
-            alert("the email is not available");
+            //alert("the email is not available");
             return false;
         }
         else {
@@ -99,6 +134,7 @@ function logIn() {
         alert("not find");
         return false;
     } else if (blocked(username)) {
+        alert("Wait, you tried too much");
         return false;
     }
     else if (password != user.password) {
@@ -114,7 +150,8 @@ function logIn() {
     }
 }
 function goodPassword(password) {
-    return strongPassword(password) == "Strong";
+    let strong = strongPassword(password);
+    return strong == "Strong" || strong == "Moderate";
 }
 
 function strongPassword(input) {

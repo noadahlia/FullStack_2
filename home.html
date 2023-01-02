@@ -95,10 +95,15 @@
         let user = localStorage.getItem("user");
         user = JSON.parse(user);
         let username = user.userName;
-        document.getElementById("usernameTitle").innerHTML="Welcome, "+username;
-        function openGame(game){
-            var url = "C:/Fullstack/Project2/FullStack_2/games/"+game+".html";
-            window.location.href=url;
+        document.getElementById("usernameTitle").innerHTML = "Welcome, " + username;
+        function openGame(game) {
+            //const url = "./games/" + game + ".html";
+            const url = "./choose_snake.html";
+            const frame = "./gameDisplay.html";
+            localStorage.setItem("url", url);
+            localStorage.setItem("gameTitle", game.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) { return str.toUpperCase(); }));
+            
+            window.location.href = frame;
         }
     </script>
     <script>
