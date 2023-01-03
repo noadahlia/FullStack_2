@@ -131,14 +131,14 @@ function logIn() {
         }
     }
     if (!find) {
-        alert("not find");
+        alert("The user is not correct");
         return false;
     } else if (blocked(username)) {
         alert("Wait, you tried too much");
         return false;
     }
     else if (password != user.password) {
-        alert("password is not correct");
+        alert("Password is not correct");
         const missedTry = { userName: username, time: new Date().getTime() };
         triesArr.push(missedTry);
         tries = JSON.stringify(triesArr);

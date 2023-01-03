@@ -23,3 +23,22 @@ body {
   /*min-height: 100vh;*/
 }
 
+.logout_btn, .home_btn{
+  border: solid;
+  border-width: 1px;
+  border-color: blueviolet;
+  border-radius: 5px;
+}
+.icons{
+  position:fixed;
+  top:0;
+  padding-inline-start: 0;
+  margin: 0;
+}
+
+.icons li{
+  top:0;
+  display: inline;
+  float: left;
+  margin: 5px;
+}
