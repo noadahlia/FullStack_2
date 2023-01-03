@@ -15,75 +15,57 @@
 
 <body>
     <div class="main-container">
-        <h1 id="usernameTitle"></h1>
+        <div id="usernameTitle"></div>
         <h3>Play here to a lot of various games. Save your records and compare to others gamers to become the best</h3>
         <div class="games-container">
 
             <div class="gallery" id="wordGuessing" onclick="openGame('wordGuessing')">
-                <a target="_blank" href="">
-                    <img src="images/wordGuessing.png" width="600" height="400">
-                </a>
+                <img src="images/wordGuessing.png" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
 
             <div class="gallery" id="snake" onclick="openGame('snake')">
-                <a target="_blank" href="">
-                    <img src="images/snake.png" width="600" height="400">
-                </a>
+                <img src="images/snake.png" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
 
             <div class="gallery">
-                <a target="_blank" href="img_forest.jpg">
-                    <img src="images/angrybirds.png" width="600" height="400">
-                </a>
+                <img src="images/angrybirds.png" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
 
             <div class="gallery">
-                <a target="_blank" href="img_lights.jpg">
-                    <img src="images/Battleborn_cover_art.jpg" width="600" height="400">
-                </a>
+                <img src="images/Battleborn_cover_art.jpg" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
 
             <div class="gallery">
-                <a target="_blank" href="img_mountains.jpg">
-                    <img src="images/girl.png" width="600" height="400">
-                </a>
+                <img src="images/girl.png" width="600" height="400">
                 <div class="overlay">
 
                 </div>
             </div>
             <div class="gallery">
-                <a target="_blank" href="img_mountains.jpg">
-                    <img src="images/mario.png" width="600" height="400">
-                </a>
+                <img src="images/mario.png" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
             <div class="gallery">
-                <a target="_blank" href="img_mountains.jpg">
-                    <img src="images/nyancat.jpg" width="600" height="400">
-                </a>
+                <img src="images/nyancat.jpg" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
             <div class="gallery">
-                <a target="_blank" href="img_mountains.jpg">
-                    <img src="images/war.png" width="600" height="400">
-                </a>
+                <img src="images/war.png" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
             <div class="gallery">
-                <a target="_blank" href="img_mountains.jpg">
-                    <img src="images/wizard.jpg" width="600" height="400">
-                </a>
+                <img src="images/wizard.jpg" width="600" height="400">
                 <div class="overlay">
                 </div>
             </div>
@@ -95,16 +77,19 @@
         user = JSON.parse(user);
         let username = user.userName;
         document.getElementById("usernameTitle").innerHTML = "Welcome, " + username;
+        document.getElementById("usernameTitle").style.fontSize = "50px"
+        document.getElementById("usernameTitle").style.textAlign = "center";
         function openGame(game) {
             //const url = "./games/" + game + ".html";
-            let url="./choose_snake.html";
-            if(game=="wordGuessing"){
-                url="./games/wordGuessing.html";
+            alert(document.getElementById(game).parentElement.className)
+            let url = "./choose_snake.html";
+            if (game == "wordGuessing") {
+                url = "./games/wordGuessing.html";
             }
             const frame = "./gameDisplay.html";
             localStorage.setItem("url", url);
-            localStorage.setItem("game",game);
-            
+            localStorage.setItem("game", game);
+
             window.location.href = frame;
         }
     </script>

@@ -14,13 +14,13 @@
 
 <body>
     <div class="main-container">
-        <h1 id="game_title" class="game_title">
+        <h1 id="game_title" class="game_title" style="text-align: center;">
             <!-- Word Guessing -->
             <h1>
                 <div class="wrapper">
                     <div class="scores column">
-                        <h4>Scores</h4>
-                        <table id="score_table">
+                        <h4 style="font-size: 18px;">Scores</h4>
+                        <table id="score_table" style="text-align:center; font-size: 15px;border-spacing: 10px 2px;table-layout: auto;width:100%;">
 
                         </table>
                         <p id="score">Hey</p>
@@ -63,13 +63,13 @@
 
             let rowCount = table.rows.length;
             let row = table.insertRow(rowCount);
-
             let cell1 = row.insertCell(0);
             let username = user.userName;
             cell1.innerHTML = username;
-
+            cell1.style.textAlign="left";
             let cell2 = row.insertCell(1);
             cell2.innerHTML = user[game];
+            cell2.style.textAlign="right";
 
         }
 

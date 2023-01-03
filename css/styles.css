@@ -2,14 +2,16 @@ body {
   background-color: rgba(0, 0, 0, 0.925);
   color: rgb(255, 255, 255);
   margin:0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 
 
 .main-container {
   margin-left: 10%;
   margin-right: 10%;
-  margin-top: 1%;
-  margin-bottom: 2%;
+  margin-top: 5%;
+  margin-bottom: 5%;
   height: fit-content;
   border-radius: 5px;
   background-color: rgba(53, 45, 45, 0.781);
