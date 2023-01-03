@@ -64,6 +64,8 @@ function moveOutcome() {
     if (checkForHits(squares)) {
         alert("you hit something");
         //popup.style.display = "flex"; return
+        localStorage.setItem("score", 0);
+        score = 0;
         clearInterval(interval);
         if (confirm("Play Again?") == true) {
             replay();
@@ -115,7 +117,7 @@ function eatApple(squares, tail) {
             squares[boomIndex].classList.remove("boom");
             randomBoom(squares);
         }
-        score++;
+        score += stage;
         //scoreDisplay.textContent = score;
         localStorage.setItem("score", score);
         clearInterval(interval);
@@ -149,10 +151,6 @@ function control(e) {
     }
 }
 
-// up.addEventListener("click", () => direction = -width);
-// bottom.addEventListener("click", () => direction = +width);
-// left.addEventListener("click", () => direction = -1);
-// right.addEventListener("click", () => direction = 1);
 
 document.addEventListener("keydown", function (e) {
     if (e.key == 'ArrowRight') {
@@ -173,5 +171,7 @@ function replay() {
     grid.innerHTML = "";
     createBoard();
     startGame();
+    localStorage.setItem("score", 0);
+    score = 0;
     //popup.style.display = "none";
 }  
