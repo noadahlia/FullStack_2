@@ -173,5 +173,6 @@ function replay() {
     grid.innerHTML = "";
     createBoard();
     startGame();
+    localStorage.setItem("score",0);
     //popup.style.display = "none";
 }  
