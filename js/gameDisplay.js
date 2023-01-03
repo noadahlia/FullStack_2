@@ -1,6 +1,3 @@
-
-//var queryString = location.search.substring(1)+".html";
-//var url="games/"+queryString;
 let url = localStorage.getItem("url");
 document.getElementById('game_frm').src = url;
 let game = localStorage.getItem("game");
