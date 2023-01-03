@@ -45,7 +45,14 @@ h3{
     transition: .5s ease;
     background-color: rgb(166, 47, 206);
     border-radius: 40px;
+    display: table;
     text-align: center;
+  }
+
+  .textoverlay{
+    display: table-cell;
+        vertical-align: middle;
+      
   }
   
   .current-game{

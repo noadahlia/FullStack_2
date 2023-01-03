@@ -1,5 +1,6 @@
 function logout(){
-    alert("hello");
+    localStorage.removeItem("user");
+    window.location.href = "./log.html";
 }
 
 function home(){

@@ -28,6 +28,7 @@ body {
   border-width: 1px;
   border-color: blueviolet;
   border-radius: 5px;
+  cursor: pointer;
 }
 .icons{
   position:fixed;
